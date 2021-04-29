@@ -1,0 +1,51 @@
+<h1 class="mt-2">Selectores Reactivos</h1>
+<hr>
+
+<form  [formGroup]="myForm">
+<!-- REgion -->
+    <div class="row">
+        <div class="col">
+           <label class="form-laber">Continente:</label>
+            <select class="form-control"  formControlName="region">
+                <option value="">--Seleccione Continente</option>
+                <option *ngFor="let item of regiones" [value]="item | lowercase"
+                >
+                    {{item}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Paises -->
+    <div class="row">
+        <div class="col">
+           <label class="form-laber">Pais:</label>
+            <select class="form-control"  formControlName="pais" >
+                <option value=""> --Seleccione Pais</option>
+                <option *ngFor="let item of paises" [value]="item.alpha3Code"
+                >
+                    {{item.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Paises fronterizos -->
+    <div class="row">
+        <div class="col">
+           <label class="form-laber">Pais fronterizo:</label>
+            <select class="form-control"  formControlName="frontera" >
+                <option value=""> --Seleccione Frontera</option>
+                <option *ngFor="let item of fronteras" [value]="item.alpha3Code"
+                >
+                    {{item.name}}
+                </option>
+            </select>
+        </div>
+    </div>
+</form>
+<pre>
+    {{myForm.valid}}
+    <br>
+    {{myForm.value | json}}
+</pre>
